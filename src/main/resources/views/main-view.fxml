@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="root" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" onKeyPressed="#onKeyPressed" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/globals.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tftrolldownsimulator.controllers.MainController">
+   <bottom>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="shopActionsHud" fitHeight="173.0" fitWidth="960.0" layoutX="160.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/shop-actions-hud.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" layoutX="671.0" layoutY="45.0" maxHeight="23.0" maxWidth="75.0" minHeight="23.0" minWidth="50.0" prefHeight="23.0" prefWidth="74.0" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons/gold.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="goldLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="goldLabel" text="50">
+                  </Text>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" layoutX="170.0" layoutY="81.0" prefHeight="116.0" prefWidth="156.0">
+               <children>
+                  <Button fx:id="buyXPButton" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#buyXP" onMouseEntered="#hoverBuyXP" onMouseExited="#exitedBuyXP" onMousePressed="#pressedBuyXP" onMouseReleased="#releasedBuyXP" textOverrun="CLIP">
+                     <graphic>
+                        <AnchorPane prefHeight="100.0" prefWidth="134.0">
+                           <children>
+                              <ImageView fx:id="buyXPImage" fitHeight="55.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/actions/buyxp/normal.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="9.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="actionLabel" text="Buy XP" wrappingWidth="80.0" />
+                              <ImageView fitHeight="150.0" fitWidth="8.0" layoutX="11.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/icons/gold.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="25.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" />
+                           </children>
+                        </AnchorPane>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="rerollButton" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#rerollShop" onMouseEntered="#hoverReroll" onMouseExited="#exitedReroll" onMousePressed="#pressedReroll" onMouseReleased="#releasedReroll" textOverrun="CLIP">
+                     <graphic>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="rerollImage" fitHeight="55.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/actions/reroll/normal.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="10.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="actionLabel" text="Reroll" wrappingWidth="80.0" />
+                              <ImageView fitHeight="150.0" fitWidth="8.0" layoutX="12.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/icons/gold.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
+                           </children>
+                        </AnchorPane>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+            <HBox fx:id="shopContainer" layoutX="330.0" layoutY="79.0" onDragDropped="#onShopDragDropped" onDragOver="#onShopDragOver" prefHeight="116.0" prefWidth="780.0" spacing="5.0">
+               <children>
+                  <AnchorPane fx:id="shopUnitContainer1" maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                     <children>
+                        <Button maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" mnemonicParsing="false" onMouseClicked="#buyUnit" prefHeight="116.0" prefWidth="152.0" userData="0">
+                           <graphic>
+                              <AnchorPane maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                                 <children>
+                                    <ImageView fx:id="shopUnitImage1" fitHeight="84.0" fitWidth="152.0" layoutY="3.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../assets/units/covers/TFT13_Rumble.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="shopUnitCostImage1" fitHeight="116.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/shopoverlays/5-cost.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text fx:id="shopUnitName1" fill="WHITE" layoutX="7.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="Rumble" wrappingWidth="141.076171875" />
+                                    <VBox alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="4.0" prefHeight="81.0" prefWidth="146.0" spacing="1.0">
+                                       <children>
+                                          <HBox fx:id="shopUnitTrait1Container1" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait1Image1" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_JunkerKing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait1Label1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Junker King" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox fx:id="shopUnitTrait2Container1" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait2Image1" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Scrap.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait2Label1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Scrap" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait3Image1" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Titan.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait3Label1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Sentinel" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </padding>
+                                    </VBox>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="108.0" layoutY="91.0" maxHeight="20.0" minHeight="11.0" prefHeight="19.0" prefWidth="36.0" spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="8.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/icons/gold.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="shopUnitCostLabel1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="5" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="shopUnitContainer2" maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                     <children>
+                        <Button maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" mnemonicParsing="false" onMouseClicked="#buyUnit" prefHeight="116.0" prefWidth="152.0" userData="1">
+                           <graphic>
+                              <AnchorPane maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                                 <children>
+                                    <ImageView fx:id="shopUnitImage2" fitHeight="84.0" fitWidth="152.0" layoutY="3.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../assets/units/covers/TFT13_Rumble.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="shopUnitCostImage2" fitHeight="116.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/shopoverlays/5-cost.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text fx:id="shopUnitName2" fill="WHITE" layoutX="7.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="Rumble" wrappingWidth="141.076171875" />
+                                    <VBox alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="4.0" prefHeight="81.0" prefWidth="146.0" spacing="1.0">
+                                       <children>
+                                          <HBox fx:id="shopUnitTrait1Container2" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait1Image2" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_JunkerKing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait1Label2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Junker King" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox fx:id="shopUnitTrait2Container2" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait2Image2" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Scrap.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait2Label2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Scrap" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait3Image2" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Titan.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait3Label2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Sentinel" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </padding>
+                                    </VBox>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="108.0" layoutY="91.0" maxHeight="20.0" minHeight="11.0" prefHeight="19.0" prefWidth="36.0" spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="8.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/icons/gold.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="shopUnitCostLabel2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="5" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="shopUnitContainer3" maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                     <children>
+                        <Button maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" mnemonicParsing="false" onMouseClicked="#buyUnit" prefHeight="116.0" prefWidth="152.0" userData="2">
+                           <graphic>
+                              <AnchorPane maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                                 <children>
+                                    <ImageView fx:id="shopUnitImage3" fitHeight="84.0" fitWidth="152.0" layoutY="3.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../assets/units/covers/TFT13_Rumble.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="shopUnitCostImage3" fitHeight="116.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/shopoverlays/5-cost.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text fx:id="shopUnitName3" fill="WHITE" layoutX="7.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="Rumble" wrappingWidth="141.076171875" />
+                                    <VBox alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="4.0" prefHeight="81.0" prefWidth="146.0" spacing="1.0">
+                                       <children>
+                                          <HBox fx:id="shopUnitTrait1Container3" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait1Image3" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_JunkerKing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait1Label3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Junker King" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox fx:id="shopUnitTrait2Container3" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait2Image3" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Scrap.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait2Label3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Scrap" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait3Image3" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Titan.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait3Label3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Sentinel" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </padding>
+                                    </VBox>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="108.0" layoutY="91.0" maxHeight="20.0" minHeight="11.0" prefHeight="19.0" prefWidth="36.0" spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="8.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/icons/gold.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="shopUnitCostLabel3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="5" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="shopUnitContainer4" maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                     <children>
+                        <Button maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" mnemonicParsing="false" onMouseClicked="#buyUnit" prefHeight="116.0" prefWidth="152.0" userData="3">
+                           <graphic>
+                              <AnchorPane maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                                 <children>
+                                    <ImageView fx:id="shopUnitImage4" fitHeight="84.0" fitWidth="152.0" layoutY="3.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../assets/units/covers/TFT13_Rumble.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="shopUnitCostImage4" fitHeight="116.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/shopoverlays/5-cost.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text fx:id="shopUnitName4" fill="WHITE" layoutX="7.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="Rumble" wrappingWidth="141.076171875" />
+                                    <VBox alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="4.0" prefHeight="81.0" prefWidth="146.0" spacing="1.0">
+                                       <children>
+                                          <HBox fx:id="shopUnitTrait1Container4" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait1Image4" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_JunkerKing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait1Label4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Junker King" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox fx:id="shopUnitTrait2Container4" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait2Image4" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Scrap.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait2Label4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Scrap" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait3Image4" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Titan.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait3Label4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Sentinel" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </padding>
+                                    </VBox>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="108.0" layoutY="91.0" maxHeight="20.0" minHeight="11.0" prefHeight="19.0" prefWidth="36.0" spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="8.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/icons/gold.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="shopUnitCostLabel4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="5" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="shopUnitContainer5" maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                     <children>
+                        <Button maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" mnemonicParsing="false" onMouseClicked="#buyUnit" prefHeight="116.0" prefWidth="152.0" userData="4">
+                           <graphic>
+                              <AnchorPane maxHeight="116.0" maxWidth="152.0" minHeight="116.0" minWidth="152.0" prefHeight="116.0" prefWidth="152.0">
+                                 <children>
+                                    <ImageView fx:id="shopUnitImage5" fitHeight="84.0" fitWidth="152.0" layoutY="3.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../assets/units/covers/TFT13_Rumble.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="shopUnitCostImage5" fitHeight="116.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/shopoverlays/5-cost.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text fx:id="shopUnitName5" fill="WHITE" layoutX="7.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="Rumble" wrappingWidth="141.076171875" />
+                                    <VBox alignment="BOTTOM_LEFT" layoutX="3.0" layoutY="4.0" prefHeight="81.0" prefWidth="146.0" spacing="1.0">
+                                       <children>
+                                          <HBox fx:id="shopUnitTrait1Container5" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait1Image5" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_JunkerKing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait1Label5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Junker King" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox fx:id="shopUnitTrait2Container5" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait2Image5" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Scrap.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait2Label5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Scrap" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="142.0" spacing="2.0">
+                                             <children>
+                                                <StackPane prefHeight="20.0" prefWidth="20.0">
+                                                   <children>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traits/shop.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fx:id="shopUnitTrait3Image5" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../assets/traiticons/TFT13_Titan.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <Text fx:id="shopUnitTrait3Label5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="traitLabel" text="Sentinel" wrappingWidth="112.38671875" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </padding>
+                                    </VBox>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="108.0" layoutY="91.0" maxHeight="20.0" minHeight="11.0" prefHeight="19.0" prefWidth="36.0" spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="8.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../assets/icons/gold.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="shopUnitCostLabel5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="shopLabel" text="5" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" fillHeight="false" layoutX="322.0" layoutY="48.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="225.0">
+               <children>
+                  <HBox alignment="BASELINE_CENTER" maxHeight="12.0" maxWidth="45.0" minHeight="12.0" minWidth="45.0" prefHeight="12.0" prefWidth="45.0" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="12.0" fitWidth="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/rarities/1-cost.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="odds1CostLabel" fill="#a19b8b" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="probabilityLabel" text="25%" wrappingWidth="30.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BASELINE_CENTER" maxHeight="12.0" maxWidth="45.0" minHeight="12.0" minWidth="45.0" prefHeight="12.0" prefWidth="45.0" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="12.0" fitWidth="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/rarities/2-cost.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="odds2CostLabel" fill="#42ba5a" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="probabilityLabel" text="25%" wrappingWidth="30.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BASELINE_CENTER" maxHeight="12.0" maxWidth="45.0" minHeight="12.0" minWidth="45.0" prefHeight="12.0" prefWidth="45.0" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="12.0" fitWidth="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/rarities/3-cost.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="odds3CostLabel" fill="#42c3ff" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="probabilityLabel" text="25%" wrappingWidth="30.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BASELINE_CENTER" maxHeight="12.0" maxWidth="45.0" minHeight="12.0" minWidth="45.0" prefHeight="12.0" prefWidth="45.0" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="12.0" fitWidth="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/rarities/4-cost.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="odds4CostLabel" fill="#aa09a4" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="probabilityLabel" text="25%" wrappingWidth="30.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BASELINE_CENTER" maxHeight="12.0" maxWidth="45.0" minHeight="12.0" minWidth="45.0" prefHeight="12.0" prefWidth="45.0" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="12.0" fitWidth="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/rarities/5-cost.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="odds5CostLabel" fill="#fc9000" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="probabilityLabel" text="1%" wrappingWidth="30.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Text fill="#bfccca" layoutX="245.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="xpProgressLabel" text="5/8" textAlignment="RIGHT" wrappingWidth="49.470041275024414" fx:id="xpProgressLabel" />
+            <Text fx:id="levelLabel" fill="WHITE" layoutX="175.0" layoutY="62.0" styleClass="levelLabel" text="Lvl. 10" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <left>
+      <AnchorPane prefHeight="501.0" prefWidth="160.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="501.0" prefWidth="160.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <AnchorPane maxHeight="350.0" minHeight="350.0" prefHeight="350.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="benchContainer" alignment="CENTER" layoutY="250.0" prefHeight="100.0" prefWidth="960.0" spacing="5.0">
+               <children>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="0">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="0">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="1">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="1">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="2">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="2">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="3">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="3">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="4">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="4">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="5">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="5">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="6">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="6">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="7">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="7">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onDragDropped="#onBenchDragDropped" onDragOver="#onBenchDragOver" prefHeight="100.0" prefWidth="100.0" styleClass="unitBench" userData="8">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="98.0" maxWidth="98.0" minHeight="98.0" minWidth="98.0" onDragDetected="#onBenchUnitDragged" prefHeight="98.0" prefWidth="98.0" userData="8">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/units/icons/TFT13_Lux.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="WHITE" stroke="BLACK" strokeType="OUTSIDE" styleClass="unitBenchLabel" text="Lux" textAlignment="CENTER" wrappingWidth="100.0">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../assets/stars/1-star.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+               </children></HBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="123.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="keybindsLabel" layoutX="210.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is a very long placeholder string that will wrap to multiple lines. Well a message might not be this long but for safety it is better if the text is longer in case the extra space is needed, but about this length should be fine because it is getting long and I am getting tired of generating sample text so why not end it here" textAlignment="CENTER" wrappingWidth="200.0" />
+            <VBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="keybindsLabel" text="Keybinds" />
+                  <VBox fx:id="keybindsContainer" alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="300.0" spacing="20.0">
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="keybindingLabel" text="Buy XP" />
+                              <Button mnemonicParsing="false" onAction="#onKeybindButtonClicked" prefHeight="40.0" prefWidth="40.0" styleClass="keybindButton" text="F" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="300.0" spacing="20.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="keybindingLabel" text="Reroll" />
+                              <Button mnemonicParsing="false" onAction="#onKeybindButtonClicked" styleClass="keybindButton" text="D" />
+                           </children>
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

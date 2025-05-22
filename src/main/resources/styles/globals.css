@@ -1,0 +1,74 @@
+/* Remove default button styles */
+.button {
+  -fx-background-color: transparent; /* No background */
+  -fx-border-color: transparent; /* No border */
+  -fx-padding: 0; /* No padding */
+  -fx-background-insets: 0; /* No insets */
+  -fx-focus-color: transparent; /* Remove focus highlight */
+  -fx-text-fill: transparent; /* Hide the button text */
+}
+
+.keybindButton {
+  -fx-border-style: solid;
+  -fx-border-width: 1;
+  -fx-border-color: black;
+  -fx-text-fill: black;
+  -fx-pref-width: 50;
+  -fx-pref-height: 50;
+  -fx-font-size: 18px;
+}
+
+Text {
+  -fx-font-family: "Spiegel-Regular";
+  -fx-font-size: 12px;
+}
+
+.goldLabel {
+  -fx-font-family: "BeaufortforLOL-Regular";
+  -fx-font-size: 16px;
+}
+
+.actionLabel {
+  -fx-font-family: "BeaufortforLOL-Regular";
+  -fx-font-size: 18px;
+}
+
+.probabilityLabel {
+  -fx-font-size: 11px;
+}
+
+.xpProgressLabel {
+  -fx-font-size: 10px;
+}
+
+.levelLabel {
+  -fx-font-family: "BeaufortforLOL-Regular";
+  -fx-font-size: 18px;
+}
+
+.shopLabel {
+  -fx-font-family: "BeaufortforLOL-Regular";
+  -fx-font-size: 14px;
+}
+
+.traitLabel {
+  -fx-font-size: 11px;
+}
+
+.unitBenchLabel {
+  -fx-font-size: 18px;
+}
+
+.unitBench {
+  -fx-border-color: black;
+  -fx-border-style: solid;
+  -fx-border-width: 1;
+}
+
+.keybindsLabel {
+  -fx-font-size: 20px;
+}
+
+.keybindingLabel {
+  -fx-font-size: 16px;
+}
